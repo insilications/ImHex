@@ -6,6 +6,9 @@ bzip2-dev
 bzip2-staticdev
 capstone
 capstone-dev
+curl
+curl-dev
+curl-staticdev
 file
 file-abi
 file-bin
@@ -38,6 +41,8 @@ glibc-locale
 glibc-nscd
 glibc-staticdev
 glibc-utils
+glm
+glm-dev
 gmp-dev
 gmp-staticdev
 gnupg
@@ -65,6 +70,8 @@ libunistring
 libunistring-dev
 libxml2-dev
 libxml2-staticdev
+llvm-dev
+llvm-staticdev
 mbedtls
 mbedtls-dev
 mbedtls-staticdev
