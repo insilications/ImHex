@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : ImHex
 Version  : 1.8.1
-Release  : 225
+Release  : 226
 URL      : file:///insilications/apps/ImHex-v1.8.1.tar.gz
 Source0  : file:///insilications/apps/ImHex-v1.8.1.tar.gz
 Summary  : A malware identification and classification tool
@@ -157,7 +157,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1625796966
+export SOURCE_DATE_EPOCH=1625797796
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -237,11 +237,15 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1625796966
+export SOURCE_DATE_EPOCH=1625797796
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
 popd
+## install_append content
+install -dm 0755 %{buildroot}/usr/share/imhex/plugins
+install -m 755 -p clr-build/plugins/builtin/builtin.hexplug %{buildroot}/usr/share/imhex/plugins/
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -254,6 +258,7 @@ popd
 %files data
 %defattr(-,root,root,-)
 /usr/share/imhex/magic/imhex.mgc
+/usr/share/imhex/plugins/builtin.hexplug
 /usr/share/imhex/resources/cacert.pem
 /usr/share/imhex/resources/splash.png
 
